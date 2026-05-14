@@ -323,7 +323,7 @@ td {
 
 
 
-.toast {
+.update {
     position: fixed;
     top: 90px;
     right: -400px;
@@ -338,7 +338,7 @@ td {
     transition: 0.4s;
 }
 
-.toast.show {
+.update.show {
     right: 30px;
 }
 
