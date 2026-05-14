@@ -11,7 +11,7 @@
 
 <body>
 
-    <!-- NAVBAR -->
+    
     <header class="nav-bar">
 
         <div class="logo-section">
@@ -41,17 +41,10 @@
     </header>
 
 
-
-
-
-
-
-    <!-- MAIN -->
+   
     <div class="container">
 
 
-
-        <!-- SIDEBAR -->
         <div class="sidebar">
 
             <div class="menu active" id="pickupMenu">
@@ -75,17 +68,11 @@
         </div>
 
 
-
-
-
-
-
-        <!-- CONTENT -->
+       
         <div class="content">
 
 
 
-            <!-- TOP CARDS -->
             <div class="cards">
 
                 <div class="card">
@@ -122,8 +109,6 @@
 
 
 
-
-
                 <div class="card">
 
                     <div class="card-top">
@@ -137,8 +122,6 @@
                     <h1 id="progressCount">1</h1>
 
                 </div>
-
-
 
 
 
@@ -160,12 +143,6 @@
 
 
 
-
-
-
-
-
-            <!-- PICKUP PAGE -->
             <div id="pickupPage">
 
                 <div class="main-box">
@@ -178,11 +155,7 @@
 
 
 
-
-
-
-
-                    <!-- CARD 1 -->
+                    
                     <div class="pickup-card">
 
                         <div class="status" id="statusText">
@@ -194,8 +167,6 @@
 
 
 
-
-                            <!-- LEFT -->
                             <div>
 
                                 <h4>Request #pr1</h4>
@@ -282,10 +253,6 @@
 
 
 
-
-
-
-                            <!-- RIGHT -->
                             <div class="right-side">
 
                                 <div>
@@ -315,12 +282,6 @@
 
 
 
-
-
-
-
-
-                    <!-- CARD 2 -->
                     <div class="pickup-card">
 
                         <div class="status">
@@ -332,8 +293,6 @@
 
 
 
-
-                            <!-- LEFT -->
                             <div>
 
                                 <h4>Request #pr4</h4>
@@ -419,11 +378,6 @@
 
 
 
-
-
-
-
-                            <!-- RIGHT -->
                             <div class="right-side">
 
                                 <div>
@@ -456,12 +410,6 @@
 
 
 
-
-
-
-
-
-            <!-- COMPLETED PAGE -->
             <div id="completedPage" class="hidden">
 
                 <div class="main-box">
@@ -511,10 +459,6 @@
 
 
 
-
-
-
-    <!-- TOAST -->
     <div class="toast" id="toast">
 
         Status updated to in progress
@@ -525,10 +469,6 @@
 
 
 
-
-
-
-    <!-- MODAL -->
     <div class="modal hidden" id="modal">
 
         <div class="modal-box">
@@ -607,14 +547,9 @@
 
 
 
-
-
-
-
-
     <script>
 
-        // SIDEBAR
+       
         const pickupMenu = document.getElementById("pickupMenu");
         const completedMenu = document.getElementById("completedMenu");
 
@@ -649,10 +584,6 @@
 
 
 
-
-
-
-        // START PICKUP
         const pickupBtn = document.getElementById("pickupBtn");
 
         const toast = document.getElementById("toast");
@@ -704,10 +635,6 @@
 
 
 
-
-
-
-        // SECOND VERIFY BUTTON
         document.getElementById("verifyBtn").onclick = () => {
 
             modal.classList.remove("hidden");
@@ -719,9 +646,6 @@
 
 
 
-
-
-        // CLOSE MODAL
         document.getElementById("closeBtn").onclick = () => {
 
             modal.classList.add("hidden");
@@ -739,6 +663,74 @@
             }
 
         };
+
+
+        const verifyCompleteBtn = document.querySelector(".verify-button");
+
+    verifyCompleteBtn.onclick = () => {
+
+        modal.classList.add("hidden");
+
+        toast.innerText = "Pickup completed successfully";
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 3000);
+
+
+
+        progressCount.innerText =
+            Number(progressCount.innerText) - 1;
+
+
+
+        document.querySelectorAll(".card h1")[3].innerText =
+            Number(document.querySelectorAll(".card h1")[3].innerText) + 1;
+
+
+
+        statusText.innerText = "completed";
+
+
+
+        const table = document.querySelector("table");
+
+
+
+        const emptyRow = document.querySelector(".empty");
+
+        if (emptyRow) {
+
+            emptyRow.parentElement.remove();
+
+        }
+
+
+
+        const row = document.createElement("tr");
+
+
+
+        row.innerHTML = `
+
+            <td>PR1</td>
+            <td>John Doe</td>
+            <td>Laptop</td>
+            <td>2 Items</td>
+            <td>123 Main Street, Apt 4B</td>
+            <td>3/25/2025</td>
+
+        `;
+
+
+
+        table.appendChild(row);
+
+    };
 
     </script>
 
